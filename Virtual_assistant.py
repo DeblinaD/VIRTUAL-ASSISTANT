@@ -64,3 +64,52 @@ def engine_speak(audio_string):
     print(asis_obj.name+ ":", audio_string)
     os.remove(audio_file) #this is for deleting those audio files which we need not to use or save but are created at the time of usage 
     
+#now this is our main function
+def respond(voice_data):
+    asis_name="Dumble"
+    #greetings command, ie. when we say hi or hello, it will also respond to us.
+    if there_exists(['hellow Dumble','hey Dumble', 'Hi Dumble', 'hellow', 'hi','hey']):
+        greetings=['Hi, how can I help you?']
+        engine_speak(greetings)
+
+engine_speak("May I know your name please?")
+if there_exists(["My name is"]):
+    person_name=voice_data.split("is")[-1].strip()
+    engine_speak("okay" + person_name())
+    person_obj.setName(person_name)
+
+#greetings
+if there_exists(["How are you?", "How are you doing?"]):
+    engine_speak("I'm fine, thank you")
+
+#time
+if there_exists(["What's the time?", "Please tell me the time"]):
+    time=ctime.split(" ")[3].split(":")[0:2]
+    if time[0]=='00':
+        houres= '12'
+    else:
+        houres= time[0]
+        minutes= time[1]
+        time= houres+"houres and" + minutes + "minutes"
+        engine_speak(time)
+
+#google search
+if there_exists(["search for", "play the video", "play the song"]) and 'youtube' not in voice_data:
+    search_terms= voice_data.split("for")[-1]
+    url= "https://google.com/search?q"+ search_term
+    webbrowser.get().open(url)
+    engine_speak("Here is what I found for" + search_terms + "on google")
+
+#search youtube
+if there_exists(["youtube"]):
+    search_term = voice_data.split("for")[-1]
+    url= "https://www.youtube.com/results?search_query="+search_term
+    webbrowser.get().open(url)
+    engine_speak("Here is what I found for" + search_terms + "on youtube")
+
+#get to know the stock price
+if there_exists(["price of"]):
+    search_term = voice_data.split("of")[-1]
+    url= ""
+
+    
