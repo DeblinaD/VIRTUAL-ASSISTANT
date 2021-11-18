@@ -110,6 +110,136 @@ if there_exists(["youtube"]):
 #get to know the stock price
 if there_exists(["price of"]):
     search_term = voice_data.split("of")[-1]
-    url= ""
+    url= "https://google.com/search?q" + search_term
+    webbrowser.get().open(url)
+    engine_speak("Here is what I found for" + search_terms + "on google")
 
+#play music
+if there_exists(["play music", "play the song", "play"]):
+    search_term = voice_data.split("play")[-1]
+    url="https://open.spotify.com/search"+ search_term
+    webbrowser.get().open(url)
+    engine_speak("You are listening to" + search_term + "now enjoy!!")
+
+#search from amazon
+if there_exists(["amazon", "amazon.com", "online shopping"]):
+    search_term = voice_data.split("for")[-1]
+    url="https://www.amazon.in" + search_term
+    webbrowser.get().open(url)
+    engine_speak("I think I found what you were looking for" + search_term +"on amazon.com")
+
+#search from flipkart
+if there_exists(["flipkart", "flipkart.com", "online shopping"]):
+    search_term = voice_data.split("for")[-1]
+    url="https://www.flipkart.com" + search_term
+    webbrowser.get().open(url)
+    engine_speak("I think I found what you were looking for" + search_term +"on flipkart.com")
+
+#search from myntra
+if there_exists(["myntra", "myntra.com", "online outfit shopping"]):
+    search_term = voice_data.split("for")[-1]
+    url="https://www.myntra.com" + search_term
+    webbrowser.get().open(url)
+    engine_speak("I think I found what you were looking for" + search_term +"on myntra.com")
+
+#make a note
+if there_exists(["make a note"]):
+    search_term = voice_data.split("for")[-1]
+    url="https://keep.google.com/#home"
+    webbrowser.get().open(url)
+    engine_speak("Okay")
+
+#open instagram
+if there_exists(["open instagram", "insta", "social media", "ig"]):
+    search_term = voice_data.split("for")[-1]
+    url="https://www.instagram.com/"
+    webbrowser.get().open(url)
+    engine_speak("Enjoy")
+
+#open twitter
+if there_exists(["open twitter", "twitter"]):
+    search_term = voice_data.split("for")[-1]
+    url="https://www.twitter.com/"
+    webbrowser.get().open(url)
+    engine_speak("Enjoy")
     
+#open facebook
+if there_exists(["open facebook", "facebook"]):
+    search_term = voice_data.split("for")[-1]
+    url="https://www.facebook.com/"
+    webbrowser.get().open(url)
+    engine_speak("Enjoy")
+
+#open gmail
+if there_exists(["open gmail", "gmail", "mail", "email"]):
+    search_term = voice_data.split("for")[-1]
+    url="https://mail.google.com/mail/u/0/#inbox"
+    webbrowser.get().open(url)
+    engine_speak("here is your email")
+
+#game(stone paper scisor)
+if there_exists(["game"]):
+    voice_data = record_audio("chose among rock, paper or scissor")
+    moves=["rock", "paper", "scissors"]
+    cmove=random.choice(moves)
+    pmove=voice_data
+    engine_speak("Dumble choses"+ cmove)
+
+    if pmove==cmove:
+        engine_speak("Match draw")
+    elif pmove=="rock" and cmove=="paper":
+        engine_speak("Okay you win this time")
+    elif pmove=="rock" and cmove=="scissor":
+        engine_speak("Dumble wins")
+    elif pmove== "paper" and cmove=="scissors":
+        engine_speak("YESSS! Dumble wins")
+    elif pmove=="paper" and cmove=="rock":
+        engine_speak("Player wins")
+    elif pmove=="scissors" and cmove=="Paper":
+        engine_speak("Player wins")
+    elif pmove=="scissors" and cmove=="rock":
+        engine_speak("Dumble wins")
+
+#coin tossing
+if there_exists(["toss", "flip", "coin"]):
+    moves=["head", "tail"]
+    cmove=random.choice(moves)
+    engine_speak("The computer chose" + cmove)
+
+#12 calc
+if there_exists(["plus", "minus", "multiply", "divide", "power", "+", "-", "*", "/"]):
+    opr = voice_data.split()[1]
+
+    if opr == '+':
+        engine_speak(int(voice_data.split()[0]) + int(voice_data.split()[2]))
+    elif opr == '-':
+        engine_speak(int(voice_data.split()[0]) - int(voice_data.split()[2]))
+    elif opr == 'multiply':
+        engine_speak(int(voice_data.split()[0]) * int(voice_data.split()[2]))
+    elif opr == 'divide':
+        engine_speak(int(voice_data.split()[0]) / int(voice_data.split()[2]))
+    elif opr == 'power':
+        engine_speak(int(voice_data.split()[0]) ** int(voice_data.split()[2]))
+    else:
+        engine_speak("wrong operator")
+
+#screenshot
+if there_exists(["capture", "screenshot", "snapshot"]):
+    myScreenshot = pyautogui.screenshot()
+    myscreenshot.save('C:\Users\DEBLINA DAS\OneDrive\Desktop\INT213_CA1')
+
+if there_exists(["exit", "quit", "bye", "goodbye"]):
+    engine_speak("I wish to talk to you more, but........bye. talk to you later.")
+    exit()
+
+time.sleep(1)
+asis_obj = asis()
+person_obj=person()
+asis_obj.name="Kim"
+engin = pyttsx3.init()
+
+while(1):
+    voice_data=record_("Recording") #get the voice input
+    print("Done")
+    print("Q: ", voice_data)
+    respond(voice_data)
