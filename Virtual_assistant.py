@@ -103,7 +103,7 @@ def respond(voice_data):
         search_terms= voice_data.split("for")[-1]
         url= "https://google.com/search?q="+ search_terms
         webbrowser.get().open(url)
-        engine_speak("Here is what I found for" + search_terms + "on google")
+        engine_speak("Here is what I found for" + search_terms)
 
     #search youtube
     if there_exists(["youtube"],voice_data):
@@ -120,23 +120,23 @@ def respond(voice_data):
         engine_speak("Here is what I found for" + search_terms + "on google")
 
     #play music
-    if there_exists(["play music", "play the song", "play"],voice_data):
-        search_terms = voice_data.split("play")[-1]
-        url="https://open.spotify.com/search"+ search_terms
-        webbrowser.get().open(url)
-        engine_speak("You are listening to" + search_terms + "now enjoy!!")
+    # if there_exists(["play music", "play the song", "play"],voice_data):
+    #     search_terms = voice_data.split("play")[-1]
+    #     url="https://open.spotify.com/search"+ search_terms
+    #     webbrowser.get().open(url)
+    #     engine_speak("You are listening to" + search_terms + "now enjoy")
 
     #search from amazon
     if there_exists(["amazon", "amazon.com", "online shopping"],voice_data):
         search_terms = voice_data.split("for")[-1]
-        url="https://www.amazon.in" + search_terms
+        url="https://www.amazon.in/l/27269828031/?pf_rd_r=JEJSPJFS32YD7X1CYD78&pf_rd_p=5667f596-ebcf-4146-a49c-cf2bc9033422&pd_rd_r=727b9922-47fa-4808-8eb7-838bb42987ed&pd_rd_w=rkVUC&pd_rd_wg=cSLfz&ref_=pd_gw_unk" + search_terms
         webbrowser.get().open(url)
         engine_speak("I think I found what you were looking for" + search_terms +"on amazon.com")
 
     #search from flipkart
     if there_exists(["flipkart", "flipkart.com", "online shopping"], voice_data):
         search_terms = voice_data.split("for")[-1]
-        url="https://www.flipkart.com" + search_terms
+        url="https://www.flipkart.com/?ef_id=3e50925f1add1647992ff3c85bb9d51e:G:s&s_kwcid=AL!739!10!76347474199614!76347484024120&semcmpid=sem_F1167BY7_Brand_adcenter" + search_terms
         webbrowser.get().open(url)
         engine_speak("I think I found what you were looking for" + search_terms +"on flipkart.com")
 
@@ -237,13 +237,13 @@ def respond(voice_data):
         myScreenshot.save('./screenshot.jpg')
 
     if there_exists(["exit", "quit", "bye", "goodbye", "okay bye"],voice_data):
-        engine_speak("I wish to talk to you more, but bye talk to you later")
+        engine_speak("I wish to talk to you more, but it seems that you are not willing to talk any more. So talk to you later")
         exit()
 
 time.sleep(1)
 asis_obj = assis()
 person_obj=person()
-asis_obj.name="Kim"
+asis_obj.name="Dumble"
 engin = pyttsx3.init()
 
 while(1):
